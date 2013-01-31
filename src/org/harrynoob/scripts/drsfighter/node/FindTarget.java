@@ -25,7 +25,8 @@ public class FindTarget extends Node {
 					&& (n.getInteracting() == null
 					|| (n.getInteracting() != null && n.getInteracting().equals(Players.getLocal().get())))
 					//Check if it's either attacking nothing or us
-					&& n.getAnimation() != 5329 
+					&& n.getAnimation() != 5329
+					&& !n.isMoving()
 					//Check if it isn't dying (5329) 
 					&& (n.getId() == Variables.SPIDER_ID 
 					|| (n.getId() != Variables.SPIDER_ID && n.getInteracting() != null
@@ -89,9 +90,9 @@ public class FindTarget extends Node {
 				Mouse.hop((int)newTarget.getCentralPoint().getX(), (int) newTarget.getCentralPoint().getY());
 				if(newTarget.interact("Attack", newTarget.getName()) && Utilities.waitFor(new Condition() {
 							public boolean validate() {
-								return (Players.getLocal().isMoving()
-										|| Players.getLocal().getInteracting() != null)
-										&& POSSIBLE_FILTER.accept(newTarget);
+								return POSSIBLE_FILTER.accept(newTarget)
+										&& (Players.getLocal().isMoving()
+										|| Players.getLocal().getInteracting() != null);
 							}
 						}, 1000)) {
 					DRSFighter.getDebugger().logMessage("Attacking new target");

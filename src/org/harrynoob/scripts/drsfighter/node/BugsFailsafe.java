@@ -2,29 +2,22 @@ package org.harrynoob.scripts.drsfighter.node;
 
 import org.powerbot.core.script.job.Task;
 import org.powerbot.core.script.job.state.Node;
-import org.powerbot.game.api.methods.interactive.NPCs;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.node.SceneEntities;
-import org.powerbot.game.api.wrappers.interactive.NPC;
 import org.powerbot.game.api.wrappers.node.SceneObject;
 import org.harrynoob.api.Utilities;
 import org.harrynoob.scripts.drsfighter.misc.Variables;
 
 public class BugsFailsafe extends Node {
 
-	private NPC n;
-	
 	@Override
 	public boolean activate() {
-		n = NPCs.getNearest(Variables.SPIDER_ID);
-		return Variables.BugFailed.contains(Players.getLocal().getLocation())
-				|| (n != null && !n.getLocation().canReach());
+		return Variables.BugFailed.contains(Players.getLocal().getLocation());
 	}
 
 	@Override
 	public void execute() {
 		SceneObject portal = SceneEntities.getNearest(Variables.PORTAL_ID);
-
 		if (portal != null && portal.validate()) {
 			if (Utilities.isOnScreen(portal)) {
 				portal.hover();
