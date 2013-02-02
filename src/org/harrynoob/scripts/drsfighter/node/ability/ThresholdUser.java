@@ -11,7 +11,7 @@ public class ThresholdUser extends Node {
 
 	@Override
 	public boolean activate() {
-		return Percentages.getHealthPercent(Players.getLocal().get()) > 70
+		return Percentages.getHealthPercent(Players.getLocal().get()) > 50
 				&& Players.getLocal().getInteracting() != null
 				&& Percentages.getHealthPercent(Players.getLocal()
 						.getInteracting().get()) >= 33

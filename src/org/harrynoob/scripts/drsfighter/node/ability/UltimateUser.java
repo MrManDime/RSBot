@@ -10,15 +10,11 @@ public class UltimateUser extends Node {
 
 	@Override
 	public boolean activate() {
-		return Percentages.getHealthPercent(Players.getLocal().get()) > 70
-				&& DRSFighter.instance.getCurrentTarget() != null
-				&& DRSFighter.instance.getCurrentTarget().validate()
+		return Percentages.getHealthPercent(Players.getLocal().get()) > 50
 				&& Players.getLocal().getInteracting() != null
-				&& Players.getLocal().getInteracting()
-						.equals(DRSFighter.instance.getCurrentTarget())
+				&& Players.getLocal().getInteracting().validate()
+				&& Players.getLocal().getInteracting().getHealthPercent() > 33
 				&& Actionbar.getAdrenalinPercent() == 100
-				&& Percentages.getHealthPercent(DRSFighter.instance
-						.getCurrentTarget().get()) > 33
 				&& !Players.getLocal().isMoving();
 	}
 
