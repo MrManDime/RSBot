@@ -2,7 +2,6 @@ package org.harrynoob.scripts.drsfighter.node;
 
 import org.harrynoob.api.Condition;
 import org.harrynoob.api.Utilities;
-import org.harrynoob.scripts.drsfighter.DRSFighter;
 import org.harrynoob.scripts.drsfighter.misc.Variables;
 import org.powerbot.core.script.job.state.Node;
 import org.powerbot.game.api.methods.interactive.Players;
@@ -17,11 +16,9 @@ public class SpinEffigy extends Node {
 	public boolean activate() {
 		return getSpinEffigies() != null
 				&& getSpinEffigies().length > 0
+				&& !Inventory.isFull()
 				&& !Players.getLocal().isMoving()
-				&& Players.getLocal().getInteracting() == null
-				&& (DRSFighter.instance.getCurrentTarget() == null || (DRSFighter.instance
-						.getCurrentTarget() != null && !DRSFighter.instance
-						.getCurrentTarget().validate()));
+				&& Players.getLocal().getInteracting() == null;
 	}
 
 	@Override
