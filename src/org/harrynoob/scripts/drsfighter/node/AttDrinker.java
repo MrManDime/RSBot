@@ -11,7 +11,7 @@ public class AttDrinker extends Node {
 
   @Override
 	public boolean activate() {
-		return Skills.getLevel(Skills.ATTACK) - Variables.AttLvlAtStart < 5
+		return Skills.getLevel(Skills.ATTACK) - Variables.AttLvlAtStart < 3
 				&& Inventory.getCount(Variables.ATT_POTION_IDS) > 0;
 	}
 

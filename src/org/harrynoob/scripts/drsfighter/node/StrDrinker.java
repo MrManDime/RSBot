@@ -11,7 +11,7 @@ public class StrDrinker extends Node {
 
   @Override
 	public boolean activate() {
-		return Skills.getLevel(Skills.STRENGTH) - Variables.StrLvlAtStart < 5
+		return Skills.getLevel(Skills.STRENGTH) - Variables.StrLvlAtStart < 3
 				&& Inventory.getCount(Variables.STR_POTION_IDS) > 0;
 	}
 
