@@ -1,5 +1,7 @@
 package org.harrynoob.scripts.autoflipper.misc;
 
+import org.powerbot.core.bot.Bot;
+
 public class Constants {
 	
 	public static final int WIDGET_GE_BASE = 105;
@@ -30,9 +32,19 @@ public class Constants {
 		public int getBuyWidgetId() {
 			return buyWidgetId;
 		}
+		
+		public int getSlotNumber() {
+			return slotNumber;
+		}
 	}
 	
-	
-	
+	public static GESlot getSlotByNumber(final int num) {
+		for(GESlot s : GESlot.values()) {
+			if(s.getSlotNumber() == num) {
+				return s;
+			}
+		}
+		return null;
+	}
 
 }

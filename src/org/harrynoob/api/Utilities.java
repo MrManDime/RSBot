@@ -59,8 +59,8 @@ public class Utilities {
 	 */
 	public static boolean isOnScreenEnhanced(org.powerbot.game.api.wrappers.interactive.Character e) {
 		WidgetChild ab = Widgets.get(640, 6);
-		if(ab == null || !ab.isOnScreen() || e.getModel().getBounds().length == 0) return e.isOnScreen();
-		for(Polygon p : e.getModel().getBounds()) {
+		if(ab == null || !ab.isOnScreen() || e.getModel().getTriangles().length == 0) return e.isOnScreen();
+		for(Polygon p : e.getModel().getTriangles())  {
 			for(int i = 0; i < p.npoints; i++) {
 				Point a = new Point(p.xpoints[i], p.ypoints[i]);
 				if(ab.contains(a) || !e.isOnScreen()) {

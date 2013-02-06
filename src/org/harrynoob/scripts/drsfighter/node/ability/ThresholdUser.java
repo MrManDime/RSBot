@@ -13,8 +13,7 @@ public class ThresholdUser extends Node {
 	public boolean activate() {
 		return Percentages.getHealthPercent(Players.getLocal().get()) > 50
 				&& Players.getLocal().getInteracting() != null
-				&& Percentages.getHealthPercent(Players.getLocal()
-						.getInteracting().get()) >= 33
+				&& Players.getLocal().getInteracting().getHealthPercent() >= 33				
 				&& Actionbar.getAdrenalinPercent() >= 50
 				&& Actionbar.getAdrenalinPercent() < 100
 				&& !Players.getLocal().isMoving() && hasUsableThresholds();
