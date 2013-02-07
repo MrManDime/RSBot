@@ -12,6 +12,7 @@ import org.powerbot.game.api.util.Timer;
 import org.powerbot.game.api.wrappers.Entity;
 import org.powerbot.game.api.wrappers.Locatable;
 import org.powerbot.game.api.wrappers.Tile;
+import org.powerbot.game.api.wrappers.interactive.Character;
 import org.powerbot.game.api.wrappers.interactive.NPC;
 import org.powerbot.game.api.wrappers.widget.WidgetChild;
 
@@ -133,14 +134,22 @@ public class Utilities {
 	 * @param loc A locatable entity
 	 */
 	public static void cameraTurnTo(final Locatable loc) {
-		Thread t = new Thread() {
+		/*Thread t = new Thread() {
 			public void run() {
 				Camera.turnTo(loc);
 				if(!isOnScreen((Entity) loc))
 					Camera.setPitch(false);
 			}
 		};
-		t.start();
+		t.start(); */
+		cameraTurnToTemp(loc);
+	}
+	
+	private static void cameraTurnToTemp(final Locatable loc) {
+		Camera.turnTo(loc);
+		if(!isOnScreenEnhanced((Character) loc)) {
+			Camera.setPitch(false);
+		}
 	}
 
 }
