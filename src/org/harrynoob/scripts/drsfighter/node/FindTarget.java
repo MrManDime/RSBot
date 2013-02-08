@@ -26,7 +26,6 @@ public class FindTarget extends Node {
 					|| (n.getInteracting() != null && n.getInteracting().equals(Players.getLocal().get())))
 					//Check if it's either attacking nothing or us
 					&& n.getAnimation() != 5329
-					&& !n.isMoving()
 					//Check if it isn't dying (5329) 
 					&& (n.getId() == Variables.SPIDER_ID 
 					|| (n.getId() != Variables.SPIDER_ID && n.getInteracting() != null

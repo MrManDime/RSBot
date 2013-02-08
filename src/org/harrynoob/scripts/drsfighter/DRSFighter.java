@@ -32,13 +32,10 @@ import org.powerbot.game.api.methods.Game;
 import org.powerbot.game.api.methods.input.Keyboard;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.tab.Skills;
-import org.powerbot.game.api.methods.widget.WidgetCache;
 import org.powerbot.game.api.util.Timer;
 import org.powerbot.game.api.wrappers.interactive.NPC;
-import org.powerbot.game.bot.Context;
-import org.powerbot.game.client.Client;
 
-@Manifest(name = "DRSFighter", topic = 899074, version = 1.22, authors = "harrynoob", description = "Kills deadly red spiders. Supports weapon switching & charm looting & effigies & spintickets!", website = "http://www.powerbot.org/community/topic/882944-eoc-drsfighter-kills-deadly-red-spiders-great-xp/")
+@Manifest(name = "DRSFighter", topic = 899074, version = 1.22, singleinstance = true, authors = "harrynoob", description = "Kills deadly red spiders. Supports weapon switching & charm looting & effigies & spintickets!", website = "http://www.powerbot.org/community/topic/882944-eoc-drsfighter-kills-deadly-red-spiders-great-xp/")
 public class DRSFighter extends ActiveScript implements PaintListener,
 		MouseListener, MessageListener {
 
@@ -54,7 +51,6 @@ public class DRSFighter extends ActiveScript implements PaintListener,
 	public MainPanel main;
 	public boolean activated;
 	private NPC currentTarget;
-	private Client client = Context.client();
 	private Painter paint;
 
 	private int startxp;
@@ -102,13 +98,8 @@ public class DRSFighter extends ActiveScript implements PaintListener,
 			if (Game.getClientState() != Game.INDEX_MAP_LOADED) {
 				return 1000;
 			}
-
-			if (client != Context.client()) {
-				WidgetCache.purge();
-				Context.get().getEventManager().addListener(this);
-				client = Context.client();
-			} else if (Players.getLocal() == null)
-				return 0;
+			if (Players.getLocal() == null)
+				return 10000;
 			else if (activated) {
 				Utilities.ensureActionBar(true);
 				for (Node n : NODE_LIST) {

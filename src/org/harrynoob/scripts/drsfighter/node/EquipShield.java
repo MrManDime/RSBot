@@ -45,7 +45,7 @@ public class EquipShield extends Node {
 		final Slot s = Actionbar
 				.getSlotWithAbility(Defence_Abilities.REJUVENATE);
 		if (s != null && s.getAvailableWidget() != null
-				&& s.getAvailableWidget().validate()) {
+				&& s.getAvailableWidget().isOnScreen()) {
 			return true;
 		}
 		return false;

@@ -1,7 +1,5 @@
 package org.harrynoob.scripts.autoflipper.misc;
 
-import org.powerbot.core.bot.Bot;
-
 public class Constants {
 	
 	public static final int WIDGET_GE_BASE = 105;

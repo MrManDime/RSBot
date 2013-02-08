@@ -17,7 +17,7 @@ import org.powerbot.game.api.util.Timer;
 import org.powerbot.game.api.wrappers.node.GroundItem;
 import org.powerbot.game.api.wrappers.node.Item;
 
-@Manifest( authors = {"harrynoob"}, name = "BonePicker", version = 0.2)
+@Manifest( authors = {"harrynoob"}, name = "BonePicker", description = "Picks bones | Free XP",version = 0.2)
 public class BonePicker extends ActiveScript implements PaintListener, MessageListener{
 
 	public static final int BONES_ID = 526;

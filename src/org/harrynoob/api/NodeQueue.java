@@ -1,14 +1,12 @@
 package org.harrynoob.api;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedList;
 
 import org.powerbot.core.script.job.LoopTask;
-import org.powerbot.core.script.job.state.Node;
 
 public class NodeQueue {
 
-	private List<Node> queue = new ArrayList<Node>();
+	private LinkedList<PriorityNode> queue = new LinkedList<PriorityNode>();
 	private int[] insertionPoints;
 	private boolean running;
 	
@@ -16,8 +14,26 @@ public class NodeQueue {
 		insertionPoints = new int[5];
 	}
 	
-	public void add(Node n, Priority p) {
+	public void add(PriorityNode n, Priority p) {
+		queue.add(getInsertionPoint(p.getId()), n);
 		insertionPoints[p.getId()]++;
+	}
+	
+	public void handle() {
+		if(!queue.isEmpty()) {
+			if(queue.peek().activate()) {
+				insertionPoints[queue.peek().getPriority().getId()]--;
+				queue.remove().execute();
+			}
+		}
+	}
+	
+	private int getInsertionPoint(int id) {
+		int temp = 0;
+		for(int i = 0; i < id; i++) {
+			temp += insertionPoints[i];
+		}
+		return temp;
 	}
 	
 	public void stop() {
@@ -27,6 +43,7 @@ public class NodeQueue {
 	public boolean isHandling() {
 		return running;
 	}
+	
 	
 }
 
@@ -42,6 +59,8 @@ class EventInvoker extends LoopTask {
 	public int loop() {
 		if(!queue.isHandling()) {
 			getContainer().shutdown();
+		} else {
+			queue.handle();
 		}
 		return 100;
 	}

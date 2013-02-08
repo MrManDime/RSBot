@@ -14,6 +14,7 @@ import org.powerbot.core.script.job.Task;
 import org.powerbot.core.script.job.state.Node;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.tab.Equipment;
+import org.powerbot.game.api.util.Random;
 import org.powerbot.game.api.util.Timer;
 
 public class RejuvenateSwitcher extends Node {
@@ -24,7 +25,7 @@ public class RejuvenateSwitcher extends Node {
 				&& getSlotWithAbility(Defence_Abilities.REJUVENATE) != null
 				&& Actionbar.getAdrenalinPercent() == 100
 				&& Variables.switchWeapons
-				&& Percentages.getHealthPercent(Players.getLocal().get()) < 70
+				&& Percentages.getHealthPercent(Players.getLocal().get()) < Random.nextInt(60, 70)
 				&& !Players.getLocal().isMoving()
 				&& Equipment.containsOneOf(Variables.shieldID);
 	}

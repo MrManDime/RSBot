@@ -6,12 +6,13 @@ import org.harrynoob.scripts.drsfighter.DRSFighter;
 import org.powerbot.core.script.job.Task;
 import org.powerbot.core.script.job.state.Node;
 import org.powerbot.game.api.methods.interactive.Players;
+import org.powerbot.game.api.util.Random;
 
 public class ThresholdUser extends Node {
 
 	@Override
 	public boolean activate() {
-		return Percentages.getHealthPercent(Players.getLocal().get()) > 50
+		return Percentages.getHealthPercent(Players.getLocal().get()) > Random.nextInt(65, 75)
 				&& Players.getLocal().getInteracting() != null
 				&& Players.getLocal().getInteracting().getHealthPercent() >= 33				
 				&& Actionbar.getAdrenalinPercent() >= 50
