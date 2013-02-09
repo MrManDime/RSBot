@@ -25,7 +25,7 @@ public class RejuvenateSwitcher extends Node {
 				&& getSlotWithAbility(Defence_Abilities.REJUVENATE) != null
 				&& Actionbar.getAdrenalinPercent() == 100
 				&& Variables.switchWeapons
-				&& Percentages.getHealthPercent(Players.getLocal().get()) < Random.nextInt(60, 70)
+				&& Percentages.getHealthPercent(Players.getLocal().get()) < Random.nextInt(65, 70)
 				&& !Players.getLocal().isMoving()
 				&& Equipment.containsOneOf(Variables.shieldID);
 	}
@@ -48,6 +48,16 @@ public class RejuvenateSwitcher extends Node {
 				Variables.rejuvUsed++;
 			}
 		}
+	}
+	
+	@SuppressWarnings("unused")
+	private boolean rejuvUsable() {
+		return Utilities.waitFor(new Condition() {
+			public boolean validate() {
+				return isAbilityAvailable(getSlotWithAbility(Defence_Abilities.REJUVENATE)
+						.getIndex());
+			}
+		}, 5000);
 	}
 
 }

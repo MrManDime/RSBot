@@ -3,7 +3,6 @@ package org.harrynoob.api;
 import java.awt.Point;
 import java.awt.Polygon;
 
-import org.powerbot.core.bot.Bot;
 import org.powerbot.core.script.job.Task;
 import org.powerbot.game.api.methods.Tabs;
 import org.powerbot.game.api.methods.Widgets;
@@ -11,7 +10,6 @@ import org.powerbot.game.api.methods.input.Mouse;
 import org.powerbot.game.api.methods.interactive.NPCs;
 import org.powerbot.game.api.methods.node.Menu;
 import org.powerbot.game.api.methods.widget.Camera;
-import org.powerbot.game.api.util.Random;
 import org.powerbot.game.api.util.Timer;
 import org.powerbot.game.api.wrappers.Entity;
 import org.powerbot.game.api.wrappers.Locatable;
@@ -19,7 +17,6 @@ import org.powerbot.game.api.wrappers.Tile;
 import org.powerbot.game.api.wrappers.interactive.Character;
 import org.powerbot.game.api.wrappers.interactive.NPC;
 import org.powerbot.game.api.wrappers.widget.WidgetChild;
-import java.awt.Canvas;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -157,24 +154,22 @@ public class Utilities {
 	}
 	
 	public static boolean interact(final Entity e, final boolean hop, final String s) {
-		if(e.validate()) {
-			if(hop) {
-				Mouse.hop((int)e.getCentralPoint().getX(), (int)e.getCentralPoint().getY());
+		if (e.validate()) {
+			if (hop) {
+				Mouse.hop((int) e.getCentralPoint().getX(), (int) e
+						.getCentralPoint().getY());
 			} else {
 				Mouse.move(e.getCentralPoint());
-				if(e instanceof org.powerbot.game.api.wrappers.interactive.Character && ((org.powerbot.game.api.wrappers.interactive.Character) e).isMoving()) {
-					Mouse.hop((int)e.getCentralPoint().getX(), (int)e.getCentralPoint().getY());
+				if (e instanceof org.powerbot.game.api.wrappers.interactive.Character
+						&& ((org.powerbot.game.api.wrappers.interactive.Character) e)
+								.isMoving()) {
+					Mouse.hop((int) e.getCentralPoint().getX(), (int) e
+							.getCentralPoint().getY());
 				}
 			}
 			Mouse.click(false);
-			if(Menu.isOpen() && Menu.contains(s) && Menu.select(s)) {
-				Canvas c = Bot.getInstance().getCanvas();
-				Mouse.move(Random.nextInt(0, c.getWidth()), Random.nextInt(0, c.getHeight()));
-				return true;
-			}
+			return Menu.isOpen() && Menu.select(s);
 		}
-		Canvas c = Bot.getInstance().getCanvas();
-		Mouse.move(Random.nextInt(0, c.getWidth()), Random.nextInt(0, c.getHeight()));
 		return false;
 	}
 

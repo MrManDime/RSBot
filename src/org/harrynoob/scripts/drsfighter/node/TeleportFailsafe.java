@@ -6,6 +6,7 @@ import org.powerbot.game.api.methods.Widgets;
 import org.powerbot.game.api.methods.interactive.NPCs;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.util.Filter;
+import org.powerbot.game.api.util.Random;
 import org.powerbot.game.api.wrappers.interactive.NPC;
 import org.powerbot.game.api.wrappers.widget.WidgetChild;
 
@@ -21,7 +22,7 @@ public class TeleportFailsafe extends Node {
 
 	@Override
 	public boolean activate() {
-		return Players.getLocal().getHealthPercent() < 25 && !hasInteracting()
+		return Players.getLocal().getHealthPercent() < Random.nextInt(20, 30) && !hasInteracting()
 				&& Players.getLocal().getAnimation() != 16385;
 	}
 

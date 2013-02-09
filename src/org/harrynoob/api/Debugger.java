@@ -38,5 +38,14 @@ public class Debugger extends JFrame{
 	
 	public void logMessage(String s){
 		debugField.append(s + "\n");
+		if(!isMaxSize(4, 3)) {
+			pack();
+		}
 	}	
+	
+	private boolean isMaxSize(final int widthDiv, final int heightDiv) {
+		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+		return getSize().getWidth() < d.getWidth() / widthDiv 
+				&& getSize().getHeight() < d.getHeight() / heightDiv;
+	}
 }

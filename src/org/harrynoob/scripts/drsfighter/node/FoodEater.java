@@ -6,12 +6,13 @@ import org.harrynoob.scripts.drsfighter.misc.Variables;
 import org.powerbot.core.script.job.state.Node;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.tab.Inventory;
+import org.powerbot.game.api.util.Random;
 
 public class FoodEater extends Node {
 
 	@Override
 	public boolean activate() {
-		return Players.getLocal().getHealthPercent() < 50
+		return Players.getLocal().getHealthPercent() < Random.nextInt(45, 55)
 				&& Inventory.getCount(Variables.FOOD_IDS) > 0;
 	}
 

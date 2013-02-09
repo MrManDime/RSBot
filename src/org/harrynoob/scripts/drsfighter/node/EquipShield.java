@@ -12,6 +12,7 @@ import org.powerbot.core.script.job.state.Node;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.tab.Equipment;
 import org.powerbot.game.api.methods.tab.Inventory;
+import org.powerbot.game.api.util.Random;
 
 public class EquipShield extends Node {
 
@@ -20,7 +21,7 @@ public class EquipShield extends Node {
 		return Variables.switchWeapons
 				&& Inventory.getItem(Variables.shieldID) != null
 				/* && Equipment.appearanceContainsOneOf(Variables.weaponID) */
-				&& Percentages.getHealthPercent(Players.getLocal().get()) < 70
+				&& Percentages.getHealthPercent(Players.getLocal().get()) < Random.nextInt(60, 70)
 				&& Actionbar.getAdrenalinPercent() == 100 && isRejuvUsable();
 	}
 
