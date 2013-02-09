@@ -6,7 +6,9 @@ import java.awt.Polygon;
 import org.powerbot.core.script.job.Task;
 import org.powerbot.game.api.methods.Tabs;
 import org.powerbot.game.api.methods.Widgets;
+import org.powerbot.game.api.methods.input.Mouse;
 import org.powerbot.game.api.methods.interactive.NPCs;
+import org.powerbot.game.api.methods.node.Menu;
 import org.powerbot.game.api.methods.widget.Camera;
 import org.powerbot.game.api.util.Timer;
 import org.powerbot.game.api.wrappers.Entity;
@@ -134,22 +136,30 @@ public class Utilities {
 	 * @param loc A locatable entity
 	 */
 	public static void cameraTurnTo(final Locatable loc) {
-		/*Thread t = new Thread() {
+		Thread t = new Thread() {
 			public void run() {
 				Camera.turnTo(loc);
 				if(!isOnScreen((Entity) loc))
 					Camera.setPitch(false);
 			}
 		};
-		t.start(); */
-		cameraTurnToTemp(loc);
+		t.start();
 	}
 	
-	private static void cameraTurnToTemp(final Locatable loc) {
+	public static void cameraTurnToTemp(final Locatable loc) {
 		Camera.turnTo(loc);
 		if(!isOnScreenEnhanced((Character) loc)) {
 			Camera.setPitch(false);
 		}
+	}
+	
+	public static boolean interact(final Entity e, final boolean hop, final String s) {
+		if(hop) {
+			Mouse.hop((int)e.getCentralPoint().getX(), (int)e.getCentralPoint().getY());
+		}
+		Mouse.move(e.getCentralPoint());
+		Mouse.click(false);
+		return Menu.isOpen() && Menu.select(s);
 	}
 
 }

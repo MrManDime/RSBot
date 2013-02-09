@@ -7,7 +7,6 @@ import org.harrynoob.scripts.drsfighter.misc.Variables;
 import org.powerbot.core.script.job.state.Node;
 import org.powerbot.game.api.methods.Settings;
 import org.powerbot.game.api.methods.Widgets;
-import org.powerbot.game.api.methods.input.Mouse;
 import org.powerbot.game.api.methods.interactive.NPCs;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.tab.Summoning;
@@ -83,11 +82,11 @@ public class FindTarget extends Node {
 					return Utilities.isOnScreen(newTarget);
 				}
 			}, 2000)) {
-				if(!Variables.mouseHop) {
-					Mouse.move(newTarget.getCentralPoint());
-				}
-				Mouse.hop((int)newTarget.getCentralPoint().getX(), (int) newTarget.getCentralPoint().getY());
-				if(newTarget.interact("Attack", newTarget.getName()) && Utilities.waitFor(new Condition() {
+//				if(!Variables.mouseHop) {
+//					Mouse.move(newTarget.getCentralPoint());
+//				}
+//				Mouse.hop((int)newTarget.getCentralPoint().getX(), (int) newTarget.getCentralPoint().getY());
+				if(Utilities.interact(newTarget, Variables.mouseHop, "Attack") && Utilities.waitFor(new Condition() {
 							public boolean validate() {
 								return POSSIBLE_FILTER.accept(newTarget)
 										&& (Players.getLocal().isMoving()

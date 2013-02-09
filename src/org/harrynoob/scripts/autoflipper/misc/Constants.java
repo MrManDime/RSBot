@@ -1,11 +1,8 @@
 package org.harrynoob.scripts.autoflipper.misc;
 
-<<<<<<< HEAD
-=======
 import org.powerbot.game.api.methods.Widgets;
 import org.powerbot.game.api.wrappers.widget.WidgetChild;
 
->>>>>>> Flippler pls
 public class Constants {
 	
 	public static final int WIDGET_GE_BASE = 105;
@@ -19,6 +16,9 @@ public class Constants {
 	public static final int WIDGET_PROGRESS_BAR_LARGE_BASE = 199;
 	public static final int WIDGET_PROGRESS_BAR_LARGE_ACTUAL = 2;
 	public static final int WIDGET_PROGRESS_BAR_LARGE_MAX = 1;
+	public static final int WIDGET_SEARCH_BASE = 389;
+	public static final int WIDGET_SEARCH_OPTIONS = 4;
+	public static final int WIDGET_SEARCH_TEXT = 9;
 	public static final int[] NPC_CLERK = {1419, 2593, 2240, 2241, 2590 };
 	
 	public enum GESlot {

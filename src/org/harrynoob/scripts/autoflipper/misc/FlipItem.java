@@ -9,7 +9,7 @@ public class FlipItem {
 		this.name = name;
 		this.amount = amount;
 	}
-
+	
 	public String getName() {
 		return name;
 	}

@@ -37,20 +37,25 @@ public class CharmLooter extends Node {
 					return;
 				}
 			}
-			if(Variables.mouseHop) Mouse.hop((int)charm.getCentralPoint().getX(), (int)charm.getCentralPoint().getY());
-			charm.interact("Take", charm.getGroundItem().getName());
-			if(!Utilities.waitFor(new Condition(){
-				public boolean validate(){
-					return !charm.validate();
+			if(Variables.mouseHop) {
+				Mouse.hop((int)charm.getCentralPoint().getX(), (int)charm.getCentralPoint().getY());
+			} else {
+				Mouse.move(charm.getCentralPoint());
+			}
+			if(charm.interact("Take", charm.getGroundItem().getName())) {
+				if(!Utilities.waitFor(new Condition(){
+					public boolean validate(){
+						return !charm.validate();
+					}
+				}, 3000)) {
+					h.put(t, h.containsKey(t) ? new Integer(h.get(t).intValue() + 1) : new Integer(1));
 				}
-			}, 3000)) {
-				h.put(t, h.containsKey(t) ? new Integer(h.get(t).intValue() + 1) : new Integer(1));
 			}
 		}
 	}
 	
 	private boolean allowTile(Tile b) {
-		return h.containsKey(b) ? h.get(b).intValue() < 5 : true;
+		return h.containsKey(b) ? h.get(b).intValue() < 3 : true;
 	}
 	
 }
