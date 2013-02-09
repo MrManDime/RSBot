@@ -157,15 +157,21 @@ public class Utilities {
 	}
 	
 	public static boolean interact(final Entity e, final boolean hop, final String s) {
-		if(hop) {
-			Mouse.hop((int)e.getCentralPoint().getX(), (int)e.getCentralPoint().getY());
-		}
-		Mouse.move(e.getCentralPoint());
-		Mouse.click(false);
-		if(Menu.isOpen() && Menu.select(s)) {
-			Canvas c = Bot.getInstance().getCanvas();
-			Mouse.move(Random.nextInt(0, c.getWidth()), Random.nextInt(0, c.getHeight()));
-			return true;
+		if(e.validate()) {
+			if(hop) {
+				Mouse.hop((int)e.getCentralPoint().getX(), (int)e.getCentralPoint().getY());
+			} else {
+				Mouse.move(e.getCentralPoint());
+				if(e instanceof org.powerbot.game.api.wrappers.interactive.Character && ((org.powerbot.game.api.wrappers.interactive.Character) e).isMoving()) {
+					Mouse.hop((int)e.getCentralPoint().getX(), (int)e.getCentralPoint().getY());
+				}
+			}
+			Mouse.click(false);
+			if(Menu.isOpen() && Menu.select(s)) {
+				Canvas c = Bot.getInstance().getCanvas();
+				Mouse.move(Random.nextInt(0, c.getWidth()), Random.nextInt(0, c.getHeight()));
+				return true;
+			}
 		}
 		return false;
 	}
