@@ -173,6 +173,7 @@ public class Utilities {
 				return true;
 			}
 		}
+		Canvas c = Bot.getInstance().getCanvas();
 		Mouse.move(Random.nextInt(0, c.getWidth()), Random.nextInt(0, c.getHeight()));
 		return false;
 	}
