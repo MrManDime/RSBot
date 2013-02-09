@@ -4,6 +4,9 @@ package org.harrynoob.api;
 //import java.awt.Font;
 //import java.awt.Toolkit;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 import javax.swing.JFrame;
 //import javax.swing.JScrollPane;
 //import javax.swing.JTextArea;
@@ -37,14 +40,11 @@ public class Debugger extends JFrame{
 */	}
 	
 	public void logMessage(String s){
-<<<<<<< HEAD
-		debugField.append(s + "\n");
+		//debugField.append(s + "\n");
 		if(!isMaxSize(4, 3)) {
 			pack();
 		}
-=======
 		//debugField.append(s + "\n");
->>>>>>> Commits yo
 	}	
 	
 	private boolean isMaxSize(final int widthDiv, final int heightDiv) {
