@@ -3,6 +3,7 @@ package org.harrynoob.api;
 import java.awt.Point;
 import java.awt.Polygon;
 
+import org.powerbot.core.bot.Bot;
 import org.powerbot.core.script.job.Task;
 import org.powerbot.game.api.methods.Tabs;
 import org.powerbot.game.api.methods.Widgets;
@@ -10,6 +11,7 @@ import org.powerbot.game.api.methods.input.Mouse;
 import org.powerbot.game.api.methods.interactive.NPCs;
 import org.powerbot.game.api.methods.node.Menu;
 import org.powerbot.game.api.methods.widget.Camera;
+import org.powerbot.game.api.util.Random;
 import org.powerbot.game.api.util.Timer;
 import org.powerbot.game.api.wrappers.Entity;
 import org.powerbot.game.api.wrappers.Locatable;
@@ -17,6 +19,7 @@ import org.powerbot.game.api.wrappers.Tile;
 import org.powerbot.game.api.wrappers.interactive.Character;
 import org.powerbot.game.api.wrappers.interactive.NPC;
 import org.powerbot.game.api.wrappers.widget.WidgetChild;
+import java.awt.Canvas;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -159,7 +162,12 @@ public class Utilities {
 		}
 		Mouse.move(e.getCentralPoint());
 		Mouse.click(false);
-		return Menu.isOpen() && Menu.select(s);
+		if(Menu.isOpen() && Menu.select(s)) {
+			Canvas c = Bot.getInstance().getCanvas();
+			Mouse.move(Random.nextInt(0, c.getWidth()), Random.nextInt(0, c.getHeight()));
+			return true;
+		}
+		return false;
 	}
 
 }
