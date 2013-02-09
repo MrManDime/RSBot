@@ -167,12 +167,13 @@ public class Utilities {
 				}
 			}
 			Mouse.click(false);
-			if(Menu.isOpen() && Menu.select(s)) {
+			if(Menu.isOpen() && Menu.contains(s) && Menu.select(s)) {
 				Canvas c = Bot.getInstance().getCanvas();
 				Mouse.move(Random.nextInt(0, c.getWidth()), Random.nextInt(0, c.getHeight()));
 				return true;
 			}
 		}
+		Mouse.move(Random.nextInt(0, c.getWidth()), Random.nextInt(0, c.getHeight()));
 		return false;
 	}
 
