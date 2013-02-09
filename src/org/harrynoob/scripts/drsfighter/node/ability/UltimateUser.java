@@ -1,6 +1,7 @@
 package org.harrynoob.scripts.drsfighter.node.ability;
 
 import org.harrynoob.api.Actionbar;
+import org.harrynoob.api.Actionbar.Ability;
 import org.harrynoob.api.Percentages;
 import org.harrynoob.scripts.drsfighter.DRSFighter;
 import org.powerbot.core.script.job.state.Node;
@@ -11,11 +12,12 @@ public class UltimateUser extends Node {
 
 	@Override
 	public boolean activate() {
-		return Percentages.getHealthPercent(Players.getLocal().get()) > Random.nextInt(60, 70)
+		return Players.getLocal().getHealthPercent() > Random.nextInt(60, 70)
 				&& Players.getLocal().getInteracting() != null
 				&& Players.getLocal().getInteracting().validate()
-				&& Players.getLocal().getInteracting().getHealthPercent() > 33
+				&& Players.getLocal().getInteracting().getHealthPercent() > Random.nextInt(30, 33)
 				&& Actionbar.getAdrenalinPercent() == 100
+				&& ultisAvailable()
 				&& !Players.getLocal().isMoving();
 	}
 
@@ -53,6 +55,15 @@ public class UltimateUser extends Node {
 				j++;
 		}
 		return j;
+	}
+	
+	private boolean ultisAvailable() {
+		for(byte i = 0; i < 12; i++) {
+			Ability a = Actionbar.getAbilityAt(i);
+			if(a != null && Actionbar.getSlot(i).isAvailable() && Actionbar.getSlot(i).getAvailableWidget().isOnScreen()) 
+				return true;
+		}
+		return false;
 	}
 
 }

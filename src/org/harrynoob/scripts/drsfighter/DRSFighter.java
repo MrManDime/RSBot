@@ -67,8 +67,9 @@ public class DRSFighter extends ActiveScript implements PaintListener,
 		startxp = -1;
 		paint = new Painter();
 		d = new Debugger();
-		d.logMessage("Started DRSFighter");
-		d.logMessage("This can be closed & opened again through the paint");
+	//	d = new Debugger();
+	//	d.logMessage("Started DRSFighter");
+	//	d.logMessage("This can be closed & opened again through the paint");
 		try {
 			SwingUtilities.invokeLater(new Runnable() {
 				public void run() {
@@ -121,8 +122,8 @@ public class DRSFighter extends ActiveScript implements PaintListener,
 	public void onStop() {
 		if (main != null)
 			main.setVisible(false);
-		if(d != null)
-			d.setVisible(false);
+	//	if(d != null)
+	//		d.setVisible(false);
 		JOptionPane
 				.showMessageDialog(
 						null,
@@ -135,7 +136,7 @@ public class DRSFighter extends ActiveScript implements PaintListener,
 		Variables.initOptions(main);
 		timer = new Timer(0);
 		startxp = getCombatXp();
-		d.logMessage("Activated DRSFighter. Switching: "+Variables.switchWeapons+" Looting: "+Variables.lootCharms);
+		//d.logMessage("Activated DRSFighter. Switching: "+Variables.switchWeapons+" Looting: "+Variables.lootCharms);
 	}
 
 	public NPC getCurrentTarget() {

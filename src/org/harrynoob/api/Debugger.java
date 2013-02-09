@@ -1,13 +1,13 @@
 package org.harrynoob.api;
 
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Toolkit;
+//import java.awt.Dimension;
+//import java.awt.Font;
+//import java.awt.Toolkit;
 
 import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.text.DefaultCaret;
+//import javax.swing.JScrollPane;
+//import javax.swing.JTextArea;
+//import javax.swing.text.DefaultCaret;
 
 public class Debugger extends JFrame{
 
@@ -15,12 +15,12 @@ public class Debugger extends JFrame{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JTextArea debugField;
-	private JScrollPane jps;
+	//private JTextArea debugField;
+	//private JScrollPane jps;
 	
 	public Debugger() {
 		super("Debug console");
-		debugField = new JTextArea();
+/*		debugField = new JTextArea();
 		debugField.setEditable(false);
 		debugField.setLineWrap(true);
 		debugField.setFont(new Font("Arial", Font.PLAIN, 14));
@@ -34,13 +34,17 @@ public class Debugger extends JFrame{
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		pack();
 		setVisible(true);
-	}
+*/	}
 	
 	public void logMessage(String s){
+<<<<<<< HEAD
 		debugField.append(s + "\n");
 		if(!isMaxSize(4, 3)) {
 			pack();
 		}
+=======
+		//debugField.append(s + "\n");
+>>>>>>> Commits yo
 	}	
 	
 	private boolean isMaxSize(final int widthDiv, final int heightDiv) {
