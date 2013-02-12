@@ -14,7 +14,6 @@ import org.powerbot.core.script.job.Task;
 import org.powerbot.core.script.job.state.Node;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.tab.Equipment;
-import org.powerbot.game.api.util.Random;
 import org.powerbot.game.api.util.Timer;
 
 public class RejuvenateSwitcher extends Node {
