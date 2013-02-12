@@ -19,6 +19,7 @@ public class Constants {
 	public static final int WIDGET_SEARCH_BASE = 389;
 	public static final int WIDGET_SEARCH_OPTIONS = 4;
 	public static final int WIDGET_SEARCH_TEXT = 9;
+	public static final int WIDGET_SEARCH_BUTTON = 139;
 	public static final int[] NPC_CLERK = {1419, 2593, 2240, 2241, 2590 };
 	
 	public enum GESlot {
