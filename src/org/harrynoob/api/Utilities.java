@@ -1,8 +1,10 @@
 package org.harrynoob.api;
 
+import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Polygon;
 
+import org.powerbot.core.bot.Bot;
 import org.powerbot.core.script.job.Task;
 import org.powerbot.game.api.methods.Tabs;
 import org.powerbot.game.api.methods.Widgets;
@@ -10,6 +12,7 @@ import org.powerbot.game.api.methods.input.Mouse;
 import org.powerbot.game.api.methods.interactive.NPCs;
 import org.powerbot.game.api.methods.node.Menu;
 import org.powerbot.game.api.methods.widget.Camera;
+import org.powerbot.game.api.util.Random;
 import org.powerbot.game.api.util.Timer;
 import org.powerbot.game.api.wrappers.Entity;
 import org.powerbot.game.api.wrappers.Locatable;
@@ -168,7 +171,10 @@ public class Utilities {
 				}
 			}
 			Mouse.click(false);
-			return Menu.isOpen() && Menu.select(s);
+			if(Menu.isOpen() && Menu.select(s)) {
+				Dimension d = Bot.getInstance().getCanvas().getSize();
+				return Mouse.move(Random.nextInt(10, d.width - 10), Random.nextInt(10, d.width - 10));
+			}
 		}
 		return false;
 	}

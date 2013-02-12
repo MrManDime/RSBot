@@ -2,7 +2,6 @@ package org.harrynoob.scripts.drsfighter.node.ability;
 
 import org.harrynoob.api.Actionbar;
 import org.harrynoob.api.Actionbar.Ability;
-import org.harrynoob.api.Percentages;
 import org.harrynoob.scripts.drsfighter.DRSFighter;
 import org.powerbot.core.script.job.state.Node;
 import org.powerbot.game.api.methods.interactive.Players;
