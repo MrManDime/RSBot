@@ -21,7 +21,7 @@ public class EquipShield extends Node {
 		return Variables.switchWeapons
 				&& Inventory.getItem(Variables.shieldID) != null
 				/* && Equipment.appearanceContainsOneOf(Variables.weaponID) */
-				&& Percentages.getHealthPercent(Players.getLocal().get()) < Random.nextInt(60, 70)
+				&& Percentages.getHealthPercent(Players.getLocal().get()) < Random.nextInt(60, 65)
 				&& Actionbar.getAdrenalinPercent() == 100 && isRejuvUsable();
 	}
 
