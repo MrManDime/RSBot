@@ -158,6 +158,11 @@ public class Utilities {
 	
 	public static boolean interact(final Entity e, final boolean hop, final String s) {
 		if (e.validate()) {
+			if(e.getCentralPoint().equals(new Point(-1,-1))){
+				Dimension d = Bot.getInstance().getClient().getCanvas().getSize();
+				Mouse.move(Random.nextInt(25, d.width - 25), Random.nextInt(25, d.height - 25));
+				return false;
+			}
 			if (hop) {
 				Mouse.hop((int) e.getCentralPoint().getX(), (int) e
 						.getCentralPoint().getY());
@@ -172,8 +177,8 @@ public class Utilities {
 			}
 			Mouse.click(false);
 			if(Menu.isOpen() && Menu.select(s)) {
-				Dimension d = Bot.getInstance().getCanvas().getSize();
-				return Mouse.move(Random.nextInt(10, d.width - 10), Random.nextInt(10, d.width - 10));
+				Dimension d = Bot.getInstance().getClient().getCanvas().getSize();
+				return Mouse.move(Random.nextInt(10, d.width - 10), Random.nextInt(10, d.height - 10));
 			}
 		}
 		return false;
