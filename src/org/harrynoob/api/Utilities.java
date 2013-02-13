@@ -176,11 +176,12 @@ public class Utilities {
 				}
 			}
 			Mouse.click(false);
-			if(Menu.isOpen() && Menu.select(s)) {
+			if(Menu.isOpen() && Menu.contains(s) && Menu.select(s)) {
 				Dimension d = Bot.getInstance().getClient().getCanvas().getSize();
 				return Mouse.move(Random.nextInt(10, d.width - 10), Random.nextInt(10, d.height - 10));
 			}
 		}
+		Mouse.move(Random.nextInt(25, Bot.getInstance().getCanvas().getWidth() - 25), Random.nextInt(25, Bot.getInstance().getCanvas().getHeight() - 25));
 		return false;
 	}
 
