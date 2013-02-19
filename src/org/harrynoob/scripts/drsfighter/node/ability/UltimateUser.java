@@ -59,7 +59,8 @@ public class UltimateUser extends Node {
 	private boolean ultisAvailable() {
 		for(byte i = 0; i < 12; i++) {
 			Ability a = Actionbar.getAbilityAt(i);
-			if(a != null && Actionbar.getSlot(i).isAvailable() && Actionbar.getSlot(i).getAvailableWidget().isOnScreen()) 
+			if(a != null && Actionbar.getSlot(i).isAvailable() && Actionbar.getSlot(i).getAvailableWidget().isOnScreen()
+					|| !Actionbar.getSlot(i).getCooldownWidget().isOnScreen()) 
 				return true;
 		}
 		return false;

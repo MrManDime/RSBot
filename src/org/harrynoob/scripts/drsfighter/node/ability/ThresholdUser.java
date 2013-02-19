@@ -16,7 +16,6 @@ public class ThresholdUser extends Node {
 				&& Players.getLocal().getInteracting() != null
 				&& Players.getLocal().getInteracting().getHealthPercent() >= 33				
 				&& Actionbar.getAdrenalinPercent() >= 50
-				&& Actionbar.getAdrenalinPercent() < 100
 				&& !Players.getLocal().isMoving() && hasUsableThresholds();
 	}
 
