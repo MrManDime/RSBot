@@ -18,7 +18,7 @@ public class EquipWeapon extends Node {
 				&& Inventory.getItem(Variables.weaponID) != null
 				//&& Equipment.containsOneOf(Variables.shieldID)
 				&& ((Variables.rejuvTimer != null && Variables.rejuvTimer
-						.getRemaining() == 0) || Players.getLocal().getHealthPercent() > Random.nextInt(90, 95));
+						.getRemaining() == 0) || Utilities.getHpPercent() > Random.nextInt(90, 95));
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package org.harrynoob.scripts.drsfighter.node;
 
+import org.harrynoob.api.Utilities;
 import org.powerbot.core.script.job.state.Node;
 import org.powerbot.game.api.methods.Tabs;
 import org.powerbot.game.api.methods.Widgets;
@@ -22,7 +23,7 @@ public class TeleportFailsafe extends Node {
 
 	@Override
 	public boolean activate() {
-		return Players.getLocal().getHealthPercent() < Random.nextInt(20, 30) && !hasInteracting()
+		return Utilities.getHpPercent() < Random.nextInt(25, 30) && !hasInteracting()
 				&& Players.getLocal().getAnimation() != 16385;
 	}
 

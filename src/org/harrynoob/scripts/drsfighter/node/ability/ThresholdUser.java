@@ -2,6 +2,7 @@ package org.harrynoob.scripts.drsfighter.node.ability;
 
 import org.harrynoob.api.Actionbar;
 import org.harrynoob.api.Percentages;
+import org.harrynoob.api.Utilities;
 import org.harrynoob.scripts.drsfighter.DRSFighter;
 import org.powerbot.core.script.job.Task;
 import org.powerbot.core.script.job.state.Node;
@@ -12,7 +13,7 @@ public class ThresholdUser extends Node {
 
 	@Override
 	public boolean activate() {
-		return Percentages.getHealthPercent(Players.getLocal().get()) > Random.nextInt(65, 75)
+		return Utilities.getHpPercent() > Random.nextInt(65, 75)
 				&& Players.getLocal().getInteracting() != null
 				&& Players.getLocal().getInteracting().getHealthPercent() >= 33				
 				&& Actionbar.getAdrenalinPercent() >= 50

@@ -24,7 +24,7 @@ public class RejuvenateSwitcher extends Node {
 				&& getSlotWithAbility(Defence_Abilities.REJUVENATE) != null
 				&& Actionbar.getAdrenalinPercent() == 100
 				&& Variables.switchWeapons
-				&& Percentages.getHealthPercent(Players.getLocal().get()) < 70
+				&& Utilities.getHpPercent() < 70
 				&& !Players.getLocal().isMoving()
 				&& Equipment.containsOneOf(Variables.shieldID);
 	}

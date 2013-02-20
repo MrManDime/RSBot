@@ -10,6 +10,7 @@ import org.powerbot.game.api.methods.Tabs;
 import org.powerbot.game.api.methods.Widgets;
 import org.powerbot.game.api.methods.input.Mouse;
 import org.powerbot.game.api.methods.interactive.NPCs;
+import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.node.Menu;
 import org.powerbot.game.api.methods.widget.Camera;
 import org.powerbot.game.api.util.Random;
@@ -77,6 +78,10 @@ public class Utilities {
 		return true;
 	}
 
+	public static int getHpPercent() {
+		return Players.getLocal().getHealthPercent();// == 100 ? (28 - Widgets.get(748,5).getHeight()) / 28 : Players.getLocal().getHealthPercent();
+	}
+	
 	/**
 	 * Ensure inventory tab is open.
 	 */

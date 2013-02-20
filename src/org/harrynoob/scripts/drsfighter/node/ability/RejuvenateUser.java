@@ -5,6 +5,7 @@ import static org.harrynoob.api.Actionbar.isAbilityAvailable;
 
 import org.harrynoob.api.Actionbar;
 import org.harrynoob.api.Percentages;
+import org.harrynoob.api.Utilities;
 import org.harrynoob.api.Actionbar.Defence_Abilities;
 import org.harrynoob.scripts.drsfighter.DRSFighter;
 import org.harrynoob.scripts.drsfighter.misc.Variables;
@@ -19,7 +20,7 @@ public class RejuvenateUser extends Node {
 				&& getSlotWithAbility(Defence_Abilities.REJUVENATE) != null
 				&& Actionbar.getAdrenalinPercent() == 100
 				&& !Variables.switchWeapons
-				&& Percentages.getHealthPercent(Players.getLocal().get()) < 70
+				&& Utilities.getHpPercent() < 70
 				&& !Players.getLocal().isMoving();
 	}
 

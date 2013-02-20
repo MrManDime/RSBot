@@ -12,7 +12,7 @@ public class FoodEater extends Node {
 
 	@Override
 	public boolean activate() {
-		return Players.getLocal().getHealthPercent() < Random.nextInt(45, 55)
+		return Utilities.getHpPercent() < Random.nextInt(45, 55)
 				&& Inventory.getCount(Variables.FOOD_IDS) > 0;
 	}
 

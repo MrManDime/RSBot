@@ -20,7 +20,7 @@ public class EquipShield extends Node {
 		return Variables.switchWeapons
 				&& Inventory.getItem(Variables.shieldID) != null
 				/* && Equipment.appearanceContainsOneOf(Variables.weaponID) */
-				&& Percentages.getHealthPercent(Players.getLocal().get()) < 70
+				&& Utilities.getHpPercent() < 70
 				&& Actionbar.getAdrenalinPercent() == 100 && isRejuvUsable();
 	}
 
@@ -44,10 +44,6 @@ public class EquipShield extends Node {
 	private boolean isRejuvUsable() {
 		final Slot s = Actionbar
 				.getSlotWithAbility(Defence_Abilities.REJUVENATE);
-		if (s != null && s.getAvailableWidget() != null
-				&& s.getAvailableWidget().isOnScreen()) {
-			return true;
-		}
-		return false;
+		return !s.getCooldownWidget().isOnScreen();
 	}
 }
